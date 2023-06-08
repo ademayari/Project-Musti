@@ -1,0 +1,46 @@
+@font-face {
+    font-family: 'noto';
+    src: url('./fonts/Noto_Sans/NotoSans-Regular.ttf')
+}
+
+body{
+    text-align: center;
+    font-family: 'noto';
+}
+
+main{
+    max-width: 1000px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+h1{
+    color: #44A1A0;
+}
+
+.musti-img{
+    max-width: 100%;
+}
+
+.data-text{
+    font-size: 25px;
+}
+
+.data{
+    font-weight: bold;
+    color: #44A1A0;
+}
+
+.btn{
+    display: block;
+    cursor: pointer;
+    margin-left: 20px;
+    font-size: 30px;
+}
+
+.descr-container{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}

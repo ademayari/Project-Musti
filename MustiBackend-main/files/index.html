@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Musti</title>
+    <script src="https://kit.fontawesome.com/60c601cf9d.js" crossorigin="anonymous"></script>
+</head>
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;700&display=swap');
+
+
+    body {
+        text-align: center;
+        font-family: 'Noto Sans';
+    }
+
+    main {
+        max-width: 1000px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    h1 {
+        color: #44A1A0;
+    }
+
+    .musti-img {
+        max-width: 100%;
+    }
+
+    .data-text {
+        font-size: 25px;
+    }
+
+    .data {
+        font-weight: bold;
+        color: #44A1A0;
+    }
+
+    .btn {
+        display: block;
+        cursor: pointer;
+        margin-left: 20px;
+        font-size: 30px;
+    }
+
+    .descr-container {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .btn-retrain {
+        display: block;
+        cursor: pointer;
+
+        color: red;
+    }
+
+    .disable {
+        color: gray;
+    }
+</style>
+
+<body>
+    <main>
+        <h1>Waar is musti?</h1>
+        <div class="container">
+            <img src="" alt="musti image" class="musti-img" id="musti-img">
+        </div>
+        <div class="descr-container">
+            <p class="data-text">Musti is: <span id="data" class="data">...</span></p>
+            <span class="btn" id="btn" onclick="refresh()"><i class="fa-solid fa-arrows-rotate"></i></span>
+        </div>
+        <!-- <div>
+            <span class="btn-retrain" id="retrain">Hertrainen Model</span>
+        </div> -->
+    </main>
+
+    <script>
+        async function refresh(){
+            const hrf = document.location.origin + '/musti';
+            const data = document.getElementById('data')
+            const img = document.getElementById('musti-img')
+
+            data.innerHTML = '...'
+            
+            const ret = await (await fetch(hrf)).json();
+            img.src = 'data:image/png;base64, ' + ret.image
+            
+            data.innerHTML = ret?.status
+        }
+        refresh()
+    </script>
+</body>
+</html>
